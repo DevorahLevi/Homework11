@@ -62,7 +62,7 @@ public class PeopleWithEmailsFilterDemo {
         System.out.println("Print out of how many email addresses each Person has.");
         Arrays.stream(personArray)
                 .sorted((p1, p2) -> p1.getEmailMap().size() - p2.getEmailMap().size())
-                .forEach(p -> System.out.println(p.getName().getFirstName() + p.getName().getLastName() +
+                .forEach(p -> System.out.println(p.getName().getFirstName() + " " + p.getName().getLastName() +
                         " has " + p.getEmailMap().size() + " email addresses."));
     }
 }
