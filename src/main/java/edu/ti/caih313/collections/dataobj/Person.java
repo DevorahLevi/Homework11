@@ -1,10 +1,12 @@
 package edu.ti.caih313.collections.dataobj;
 
+import java.util.HashMap;
+
 public class Person {
     private Name name;
     private Gender gender;
 
-    //private EmailAddress emailAddress;
+    private EmailAddress emailAddressMap;
 
     //age in years
     //TODO -- replace by Date birthday, and getAge that calculates age
@@ -16,6 +18,8 @@ public class Person {
         this.name = name;
         this.gender = gender;
         this.age = age;
+        emailAddressMap = new EmailAddress();
+        emailAddressMap.personsEmailAddress =  new HashMap<EmailAddress.EmailType, String>();
     }
 
     public Name getName() {
@@ -33,6 +37,13 @@ public class Person {
     public Integer getAge() {
         return age;
     }
+
+    public void addEmail(EmailAddress.EmailType emailType, String emailAddress)
+    {
+        emailAddressMap.personsEmailAddress.put(emailType, emailAddress);
+    }
+
+    public HashMap<EmailAddress.EmailType, String> getEmailMap() { return emailAddressMap.personsEmailAddress; }
 
     @Override
     public String toString() {
