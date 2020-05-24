@@ -8,7 +8,7 @@ public class EmailAddress
 
     HashMap<EmailType, String> personsEmailAddress = new HashMap<EmailType, String>();
 
-    public String primaryEmail(EmailType emailType)
+    public String primaryEmail()
     {
         if (personsEmailAddress.containsKey(EmailType.HOME))
         {

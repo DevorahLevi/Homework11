@@ -1,6 +1,5 @@
 package edu.ti.caih313.collections.aggregate;
 
-import edu.ti.caih313.collections.dataobj.EmailAddress;
 import edu.ti.caih313.collections.dataobj.Name;
 import edu.ti.caih313.collections.dataobj.Person;
 
@@ -10,8 +9,10 @@ import static edu.ti.caih313.collections.dataobj.Person.Gender.FEMALE;
 import static edu.ti.caih313.collections.dataobj.Person.Gender.MALE;
 import static edu.ti.caih313.collections.dataobj.EmailAddress.EmailType;
 
-public class PeopleWithEmailsFilterDemo {
-    public static void main(String... args) {
+public class PeopleWithEmailsFilterDemo
+{
+    public static void main(String... args)
+    {
 
         Person johnSmith = new Person(new Name("John", "Smith"), MALE, 42);
         johnSmith.addEmail(EmailType.SCHOOL, "john.smith@ti.htc.edu");
@@ -46,18 +47,30 @@ public class PeopleWithEmailsFilterDemo {
         boPeep.addEmail(EmailType.WORK, "peep.bo@careonerx.com");
 
         Person personArray[] = {johnSmith, karlNg, jeffSmith, tomRich, bobSmith, janeDoe, tonyStark, boPeep};
+        PeopleWithEmailsFilterDemo.printAllSchoolEmails(personArray);
+        PeopleWithEmailsFilterDemo.printAllEmailsOverAgeX(personArray, 20);
+        PeopleWithEmailsFilterDemo.printPersonsNumberOfEmails(personArray);
+    }
 
-
+    public static void printAllSchoolEmails(Person [] personArray)
+    {
         System.out.println("List of Person's school email addresses");
         Arrays.stream(personArray)
                 .forEach(e -> System.out.println(e.getEmailMap().get(EmailType.SCHOOL)));
+    }
 
+    public static void printAllEmailsOverAgeX(Person [] personArray, int age)
+    {
         System.out.println();
-        System.out.println("List of ALL Person's emails.");
+        System.out.println("List of ALL Person's emails over the age of " + age + ".");
         Arrays.stream(personArray)
+                .filter(p -> p.getAge() > 20)
                 .forEach(e -> System.out.println(e.getName().getFirstName() + e.getName().getLastName() +
                         "'s email addresses are: " + e.getEmailMap().values()));
+    }
 
+    public static void printPersonsNumberOfEmails(Person [] personArray)
+    {
         System.out.println();
         System.out.println("Print out of how many email addresses each Person has.");
         Arrays.stream(personArray)

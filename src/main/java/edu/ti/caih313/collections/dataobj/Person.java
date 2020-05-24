@@ -14,7 +14,8 @@ public class Person {
 
     public enum Gender {MALE, FEMALE}
 
-    public Person(Name name, Gender gender, Integer age) {
+    public Person(Name name, Gender gender, Integer age)
+    {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -44,6 +45,8 @@ public class Person {
     }
 
     public HashMap<EmailAddress.EmailType, String> getEmailMap() { return emailAddressMap.personsEmailAddress; }
+
+    public EmailAddress getEmail() { return emailAddressMap; }
 
     @Override
     public String toString() {
